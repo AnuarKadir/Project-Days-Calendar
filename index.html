@@ -1,9 +1,29 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-    <head>
-        <script type="module" src="common.mjs"></script>
-        <script type="module" src="web.mjs"></script>
-    </head>
-    <body>
-    </body>
+  <head>
+    <script type="module" src="common.mjs"></script>
+    <script type="module" src="web.mjs"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Days Calendar</h1>
+      <button id="previous-month">Previous</button>
+      <span id="current-month-year"></span>
+      <button id="next-month">Next</button>
+    </header>
+
+    <form id="month-form">
+      <label for="month-select">Month</label>
+      <select id="month-select"></select>
+
+      <label for="year-input">Year</label>
+      <input id="year-input" type="number" />
+
+      <button type="submit">Go</button>
+    </form>
+
+    <section id="calendar" aria-label="Calendar"></section>
+
+    <section id="day-description" aria-live="polite"></section>
+  </body>
 </html>
