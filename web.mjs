@@ -26,6 +26,7 @@ function renderCalendar() {
   const daysInMonth = new Date(year, monthIndex + 1, 0).getDate();
   for (let day = 1; day <= daysInMonth; day++) {
     const daySlot = document.createElement("div");
+    daySlot.classList.add("day-slot")
     daySlot.textContent = day;
     calendar.appendChild(daySlot);
   }
