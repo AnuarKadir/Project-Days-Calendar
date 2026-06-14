@@ -11,10 +11,23 @@ const form = document.querySelector("#month-form");
 
 let currentDate = new Date();
 
-function updateCurrentMonthYear(){
-    const monthIndex=currentDate.getMonth()
-    const year=currentDate.getFullYear()
-    currentMonthYear.textContent=`${monthNames[monthIndex]} ${year}`
+function updateCurrentMonthYear() {
+  const monthIndex = currentDate.getMonth();
+  const year = currentDate.getFullYear();
+  currentMonthYear.textContent = `${monthNames[monthIndex]} ${year}`;
 }
 
-updateCurrentMonthYear()
+updateCurrentMonthYear();
+
+function renderCalendar() {
+  calendar.innerHTML = "";
+  const year = currentDate.getFullYear();
+  const monthIndex = currentDate.getMonth();
+  const daysInMonth = new Date(year, monthIndex + 1, 0).getDate();
+  for (let day = 1; day <= daysInMonth; day++) {
+    const daySlot = document.createElement("div");
+    daySlot.textContent = day;
+    calendar.appendChild(daySlot);
+  }
+}
+renderCalendar();
