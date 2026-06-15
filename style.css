@@ -1,0 +1,9 @@
+#calendar{
+    display: grid;
+    grid-template-columns:repeat(7,1fr)
+}
+
+.day-slot{
+    border: solid 1px;
+    padding: 3px;
+}

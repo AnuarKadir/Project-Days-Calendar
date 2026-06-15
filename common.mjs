@@ -23,7 +23,7 @@ const dayNumbers = {
   Saturday: 6,
 };
 
-const monthNames = [
+export const monthNames = [
   "January",
   "February",
   "March",
