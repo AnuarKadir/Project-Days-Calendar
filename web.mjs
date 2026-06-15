@@ -66,6 +66,16 @@ function renderCalendar() {
     daySlot.classList.add("day-slot");
     daySlot.textContent = day;
     calendar.appendChild(daySlot);
+
+    //add empty slots at the end of the month if needed
+    const totalSlotsUsed = firstDayOfWeek + daysInMonth;
+    const remainingSlots =
+      totalSlotsUsed % 7 === 0 ? 0 : 7 - (totalSlotsUsed % 7);
+    for (let i = 0; i < remainingSlots; i++) {
+      const emptySlot = document.createElement("div");
+      emptySlot.classList.add("empty-slot");
+      calendar.appendChild(emptySlot);
+    }
   }
 }
 
