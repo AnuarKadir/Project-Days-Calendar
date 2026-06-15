@@ -13,7 +13,7 @@ const monthNumbers = {
   December: 11,
 };
 
-const dayNumbers = {
+export const dayNumbers = {
   Sunday: 0,
   Monday: 1,
   Tuesday: 2,

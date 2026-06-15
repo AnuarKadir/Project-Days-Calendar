@@ -1,5 +1,5 @@
 import daysData from "./days.json" with { type: "json" };
-import { monthNames } from "./common.mjs";
+import { monthNames, dayNumbers } from "./common.mjs";
 
 const calendar = document.querySelector("#calendar");
 const currentMonthYear = document.querySelector("#current-month-year");
@@ -33,6 +33,16 @@ function updateCurrentMonthYear() {
 
 function renderCalendar() {
   calendar.innerHTML = "";
+
+  const dayNames = Object.keys(dayNumbers);
+  //add day names to the calendar
+  dayNames.forEach((dayName) => {
+    const dayHeading = document.createElement("div");
+    dayHeading.classList.add("day-heading");
+    dayHeading.textContent = dayName;
+    calendar.appendChild(dayHeading);
+  });
+
   const year = currentDate.getFullYear();
   const monthIndex = currentDate.getMonth();
 
@@ -46,7 +56,7 @@ function renderCalendar() {
   for (let i = 0; i < firstDayOfWeek; i++) {
     const emptySlot = document.createElement("div");
     emptySlot.classList.add("day-slot");
-    emptySlot.classList.add("empty-slot")
+    emptySlot.classList.add("empty-slot");
     calendar.appendChild(emptySlot);
   }
 
