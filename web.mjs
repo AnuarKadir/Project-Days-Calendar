@@ -46,7 +46,7 @@ function renderCalendar() {
   for (let i = 0; i < firstDayOfWeek; i++) {
     const emptySlot = document.createElement("div");
     emptySlot.classList.add("day-slot");
-    emptySlot.style.border = "none"; // Optional: hide the border for empty days
+    emptySlot.classList.add("empty-slot")
     calendar.appendChild(emptySlot);
   }
 
