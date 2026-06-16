@@ -83,6 +83,7 @@ function renderCalendar() {
     });
     commemorationsForThisDay.forEach((commemoration) => {
       const commemorationName = document.createElement("p");
+      commemorationName.classList.add("commemoration-name");
       commemorationName.textContent = commemoration.name;
       daySlot.appendChild(commemorationName);
     });
