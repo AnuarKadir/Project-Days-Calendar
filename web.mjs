@@ -69,6 +69,25 @@ function renderCalendar() {
     // Check if this day has a commemoration
     daySlot.dataset.day = day;
 
+    const commemorationsForThisDay = daysData.filter((commemoration) => {
+      const commemorationDate = getCommemorativeDate(
+        year,
+        commemoration.monthName,
+        commemoration.dayName,
+        commemoration.occurrence,
+      );
+      return (
+        commemorationDate.getMonth() === monthIndex &&
+        commemorationDate.getDate() === day
+      );
+    });
+    commemorationsForThisDay.forEach((commemoration) => {
+      const commemorationName = document.createElement("p");
+      commemorationName.classList.add("commemoration-name");
+      commemorationName.textContent = commemoration.name;
+      daySlot.appendChild(commemorationName);
+    });
+
     calendar.appendChild(daySlot);
   }
 
