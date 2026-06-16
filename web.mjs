@@ -1,5 +1,5 @@
 import daysData from "./days.json" with { type: "json" };
-import { monthNames, dayNumbers } from "./common.mjs";
+import { monthNames, dayNumbers, getCommemorativeDate } from "./common.mjs";
 
 const calendar = document.querySelector("#calendar");
 const currentMonthYear = document.querySelector("#current-month-year");
@@ -65,6 +65,10 @@ function renderCalendar() {
     const daySlot = document.createElement("div");
     daySlot.classList.add("day-slot");
     daySlot.textContent = day;
+
+    // Check if this day has a commemoration
+    daySlot.dataset.day = day;
+
     calendar.appendChild(daySlot);
   }
 
