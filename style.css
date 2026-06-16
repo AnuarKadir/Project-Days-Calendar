@@ -7,3 +7,9 @@
     border: solid 1px;
     padding: 3px;
 }
+
+
+/* keeping empty slots without a border after adding day names looks a bit strange, maybe we can give them another style  */
+.empty-slot{
+    border: none;
+}
