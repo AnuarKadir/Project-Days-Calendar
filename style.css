@@ -1,15 +1,21 @@
-#calendar{
-    display: grid;
-    grid-template-columns:repeat(7,1fr)
+#calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
 }
 
-.day-slot{
-    border: solid 1px;
-    padding: 3px;
+.day-heading {
+  font-weight: bold;
+  padding: 4px;
 }
 
+.day-slot {
+  border: solid 1px black;
+  padding: 3px;
+  min-height: 60px;
+}
 
-/* keeping empty slots without a border after adding day names looks a bit strange, maybe we can give them another style  */
-.empty-slot{
-    border: none;
+.empty-slot {
+  border: solid 1px black;
+  background-color: #f5f5f5;
+  min-height: 60px;
 }

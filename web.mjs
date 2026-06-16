@@ -66,28 +66,41 @@ function renderCalendar() {
     daySlot.classList.add("day-slot");
     daySlot.textContent = day;
     calendar.appendChild(daySlot);
+  }
 
-    //add empty slots at the end of the month if needed
-    const totalSlotsUsed = firstDayOfWeek + daysInMonth;
-    const remainingSlots =
-      totalSlotsUsed % 7 === 0 ? 0 : 7 - (totalSlotsUsed % 7);
-    for (let i = 0; i < remainingSlots; i++) {
-      const emptySlot = document.createElement("div");
-      emptySlot.classList.add("empty-slot");
-      calendar.appendChild(emptySlot);
-    }
+  //add empty slots at the end of the month if needed
+  const totalSlotsUsed = firstDayOfWeek + daysInMonth;
+  const remainingSlots =
+    totalSlotsUsed % 7 === 0 ? 0 : 7 - (totalSlotsUsed % 7);
+
+  for (let i = 0; i < remainingSlots; i++) {
+    const emptySlot = document.createElement("div");
+    emptySlot.classList.add("day-slot", "empty-slot");
+    calendar.appendChild(emptySlot);
   }
 }
 
-// 3. The Button Click Events
+// The Button Click Events
 previousButton.addEventListener("click", () => {
-  currentDate.setMonth(currentDate.getMonth() - 1); // Go back 1 month
+  // Set the date to the 1st of the month to avoid issues
+  //  with months having different numbers of days
+  currentDate = new Date(
+    currentDate.getFullYear(),
+    currentDate.getMonth() - 1,
+    1,
+  );
+
   updateCurrentMonthYear(); // Update the text
   renderCalendar(); // Redraw the calendar
 });
 
 nextButton.addEventListener("click", () => {
-  currentDate.setMonth(currentDate.getMonth() + 1); // Go forward 1 month
+  currentDate = new Date(
+    currentDate.getFullYear(),
+    currentDate.getMonth() + 1,
+    1,
+  );
+
   updateCurrentMonthYear();
   renderCalendar();
 });
@@ -100,8 +113,8 @@ form.addEventListener("submit", (event) => {
   const selectedMonth = parseInt(monthSelect.value);
   const selectedYear = parseInt(yearInput.value);
 
-  // Change the exact year and month of our currentDate object
-  currentDate.setFullYear(selectedYear, selectedMonth, 1);
+  // Set the currentDate to the 1st of the selected month and year
+  currentDate = new Date(selectedYear, selectedMonth, 1);
 
   updateCurrentMonthYear();
   renderCalendar();
